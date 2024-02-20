@@ -6,6 +6,8 @@ from django.http import HttpResponse
 
 def home(request): 
 
+    print("the requedst is", request)
+
     # return HttpResponse('<h1>Student IT Services - Home</h1>') 
     return render(request, 'itreporting/home.html')
 
@@ -13,9 +15,9 @@ def home(request):
 
 def about(request): 
 
-    return HttpResponse('<h1>Student IT Services - About</h1>') 
+    return render(request, 'itreporting/about.html', {'title': 'About'}) 
 
 
 def contact(request): 
 
-    return HttpResponse('<h1>Student IT Services - Contact</h1>') 
+    return render(request, 'itreporting/contact.html', {'title': 'Contact'})
