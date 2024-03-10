@@ -28,20 +28,48 @@
                     <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{% url 'itreporting:home' %}">Home</a>
                         <a class="nav-item nav-link" href="{% url 'itreporting:about' %}">About</a>
-                        <a class="nav-item nav-link" href="#">Report</a>
+                        <a class="nav-item nav-link" href="{% url 'itreporting:report' %}">Reports</a>
                         <a class="nav-item nav-link" href="{% url 'itreporting:contact' %}">Contact</a>
+
                     </div>
                     <!-- Navbar Right Side -->
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#">Login</a>
-                        <a class="nav-item nav-link" href="#">Register</a>
-                    </div>
+                    <div class="navbar-nav"> 
+
+                        {% if user.is_authenticated  %}
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a> 
+                            <a class="nav-item nav-link" href="{% url 'itreporting:issue-create' %}">Report New Issue</a>
+                            <form method="post" id="frm_logout" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <a class="nav-item nav-link" href="javascript:$('#frm_logout').submit();">Logout</a> 
+                            </form>
+                    
+                            
+                    
+                        {% else %} 
+                    
+                            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> 
+                    
+                            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> 
+                    
+                        {% endif %} 
+                    
+                     </div>
+                    
+                    
                 </div>
                 </div>
             </nav>
         </header>
         <div class="row">
             <div class="col-md-8">
+
+            {% if messages %}
+        
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
             {% block content %}
             
             
