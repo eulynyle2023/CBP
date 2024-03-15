@@ -4,7 +4,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegisterForm
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from .forms import CustomLoginForm
+
+
 # Create your views here.
+
+
+
+class CustomLoginView(LoginView):
+    
+    template_name = '../templates/login.html'  # Use your custom login template
+    # form = CustomLoginForm  # Use the custom login form class
+    redirect_authenticated_user: bool = True
+    success_url = reverse_lazy("itreportings:home")
+  
 
 
 
@@ -50,6 +67,7 @@ def profile(request):
             return render(request, 'users/profile.html', context) 
     
   
+
 
 
 

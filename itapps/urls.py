@@ -22,6 +22,7 @@ import users.views as user_views
 from users.views import register as reg1
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import CustomLoginView as loginView
 
 
 
@@ -33,7 +34,7 @@ urlpatterns = [
     # path('register', users.views.register, name="register"),  
     path('register', reg1, name="register"),  
     # path('', include('itreporting.urls')),  
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('login/', loginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile', user_views.profile, name = 'profile'), 
 

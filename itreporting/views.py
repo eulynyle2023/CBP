@@ -44,8 +44,18 @@ def B(request):
 def report(request):
     # Get all reported issues
 
-    daily_report = {'issues': Issue.objects.all(), 'title': 'Issues Reported'}
-    return render(request, 'itreporting/report.html', daily_report)
+    issues = Issue.objects.all()
+    context = {'issues': issues, 'title': 'Issues Reported'}
+
+    # Calculate even/odd flag in the view
+    for index, issue in enumerate(issues):
+        issue.is_even = index % 2 == 0
+
+    return render(request, 'your_template.html', context)
+    # daily_report = {'issues': Issue.objects.all(), 'title': 'Issues Reported'}
+
+
+    # return render(request, 'itreporting/report.html', daily_report)
 
 
 

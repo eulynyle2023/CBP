@@ -1,0 +1,45 @@
+{% extends 'itreporting/base.html' %}  {# Extend your base template #}
+{% load static %}  {# Load the staticfiles library #}
+
+{% block content %}
+
+
+<div>
+
+    <div class="login-box">
+
+    <p>Login</p>
+
+    
+
+    <form method="post" id="form_login">
+        {% csrf_token %}  {# Include the CSRF token #}
+
+        <div class="user-box">
+        <input required="" name='username' type="text">
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input required="" name="password" type="password">
+            <label>Password</label>
+          </div>
+          <a href="javascript:$('#form_login').submit();">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}" class="a2">Sign up!</a></p>
+        
+
+    </form>
+</div>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">  {# Include your custom CSS #}
+
+{% endblock content %}
+

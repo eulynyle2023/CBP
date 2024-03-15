@@ -1,25 +1,65 @@
 body {
-    background: #fafafa;
+  background: linear-gradient(to bottom, transparent, rgb(255, 255, 255)) rgb(214,219,220);
     color: #333333;
     margin-top: 5rem;
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+  h2, h3, h4, h5, h6 {
+    color: #fafafa;
   }
   
+  h1 {
+    color: #878788;
+  }
+
   ul {
     margin: 0;
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    position: fixed; /* Ensures the navbar stays fixed at the top */
+    display: flex; /* Enables horizontal arrangement of navbar items */
+    width: 100%; /* Stretches the navbar across the full width */
+    justify-content: center; /* Aligns content horizontally in the center */
+    border-bottom: 1px transparent #8a8686; /* Thin border for separation */
+    box-shadow: 6px 6px 12px #8a8686, -6px -6px 12px #8a8686 ;
+    background-image: linear-gradient(to bottom, #c0bebe, #c0c2c5); /* Subtle gradient */
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    filter: blur(0.2px); 
+    
+
+
   }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #8a8686;
+    padding: 0.7em 2.5em;
+    font-size: 11px;
+  
+    border-radius: 5.0em;
+    background:linear-gradient(to bottom, transparent, rgba(183, 178, 178, 0.58)) rgba(192, 192, 193, 0.43);
+    cursor: pointer;
+  /*   border: 1px solid #e8e8e8; */
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #8a8686, -6px -6px 12px #c0bebe ;
+  
+    /* New properties for centering and spacing */
+    display: flex; /* Allow flexbox for layout and alignment */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically (optional) */
+  
+    /* Spacing between buttons */
+    margin: 0 3px; /
   }
   
+  .navbar-dark .navbar-brand {
+    color: #6f6767;
+  }
+
+  .site-header .navbar-nav {
+    color: #6f6767;
+  }
+
   .site-header .navbar-nav .nav-link:hover {
     color: #ffffff;
   }
@@ -29,11 +69,12 @@ body {
   }
   
   .content-section {
-    background: #ffffff;
+    background: linear-gradient(to bottom, #c0bebe, #c0c2c5); /* Subtle gradient */
     padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
+    border: 1px solid #c0c2c5;
+    border-radius: 30px;
     margin-bottom: 20px;
+    margin-top: 100px;
   }
   
   .article-title {
@@ -53,6 +94,7 @@ body {
     height: 65px;
     width: 65px;
     margin-right: 16px;
+    border: 1px solid #8a8686;
   }
   
   .article-metadata {
@@ -83,3 +125,69 @@ body {
     text-decoration: none;
   }
   
+
+  .card {
+    width: 350px;
+    height: 450px;
+    border-radius: 30px;
+    background: linear-gradient(to bottom, #c0bebe, #c0c2c5); /* Subtle gradient */
+    box-shadow: 15px 15px 30px rgba(102, 96, 96, 0.91), -15px -15px 30px rgb(107, 115, 117);
+    transition: all 0.2s;
+    position: relative;
+    cursor: pointer;
+
+   }
+   
+
+.card-inner {
+  width: 300px;
+  height: 10px;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  margin-top: 20%
+}
+
+.card:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#25CFF3, #C482FF);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.circle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+
+
+.flex-row {
+  display: flex; /* Enable horizontal arrangement */
+  flex-wrap: wrap; /* Wrap cards if necessary */
+}

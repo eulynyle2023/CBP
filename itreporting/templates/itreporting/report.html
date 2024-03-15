@@ -1,11 +1,16 @@
 {% extends "itreporting/base.html" %}
+{% load static %}
+
 
 {% block content %}
 
 
 <h1>Issues Reported</h1>
+
     {% for issue in issues %}
-        <article class="media content-section">
+    <div>
+    <div class="box">
+        <article class="media content">
             <img class="rounded-circle article-img" src="{{ issue.author.profile.image.url }}"/>
             <div class="media-body">
                 <div class="article-metadata">
@@ -16,8 +21,12 @@
                 <p class="article-content">{{ issue.details }}</p>
             </div>
         </article>
-
+    </div>
+</div>
+    
     {% endfor %}
+ 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/report.css' %}">  {# Include your custom CSS #}
 
     {% if is_paginated %}
     {% if page_obj.has_previous %}
@@ -37,5 +46,5 @@
     {% endif %}
     {% endif %}
 
-
+   
 {% endblock content %}
